@@ -1,0 +1,180 @@
+@prefix ex: <http://example.org/coffee-health#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+######################################################################
+# SHACL shapes pour "synthetic_coffee_health_10000.csv"
+# - NodeShape pour le dataset (métadonnées)
+# - NodeShape pour les participants (chaque ligne du CSV)
+# - Contrôles de type, cardinalité, valeurs énumérées, plages et unicité
+######################################################################
+
+# Dataset metadata shape
+ex:DatasetShape a sh:NodeShape ;
+    sh:targetNode ex:CoffeeHealthDataset ;
+    sh:property [
+        sh:path dct:title ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "Le dataset doit avoir un titre (dct:title)." ;
+        sh:severity sh:Violation ;
+    ] ;
+    sh:property [
+        sh:path dct:creator ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "Le dataset doit avoir un créateur (dct:creator)." ;
+    ] ;
+    sh:property [
+        sh:path dct:license ;
+        sh:minCount 1 ;
+        sh:datatype xsd:anyURI ;
+        sh:message "Le dataset doit avoir une licence (dct:license), p.ex. https://creativecommons.org/licenses/by/4.0/." ;
+    ] .
+
+# Participant (chaque ligne)
+ex:ParticipantShape a sh:NodeShape ;
+    sh:targetClass ex:Participant ;
+    # Si tu veux interdire les propriétés non listées, active closed=true (ici activé)
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+
+    # ID (obligatoire, une seule valeur)
+    sh:property [
+        sh:path ex:id ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Chaque participant doit avoir un identifiant (ex:id) unique et unique par sujet." ;
+        sh:severity sh:Violation ;
+    ] ;
+
+    # Age (entier, 18-80)
+    sh:property [
+        sh:path ex:age ;
+        sh:datatype xsd:integer ;
+        sh:minCount 1 ;
+        sh:minInclusive 18 ;
+        sh:maxInclusive 80 ;
+        sh:message "Age requis (entier) entre 18 et 80." ;
+        sh:severity sh:Violation ;
+    ] ;
+
+    # Gender (valeurs contrôlées)
+    sh:property [
+        sh:path ex:gender ;
+        sh:minCount 1 ;
+        sh:in ( "Male" "Female" "Other" ) ;
+        sh:message "Genre: Male, Female ou Other." ;
+    ] ;
+
+    # Country (string ou URI selon ton mapping)
+    sh:property [
+        sh:path ex:country ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "Country requis (p.ex. 'Germany' ou code ISO 'DE')." ;
+    ] ;
+
+    # Coffee Intake (decimal, ≥0, raisonnable)
+    sh:property [
+        sh:path ex:coffeeIntake ;
+        sh:datatype xsd:decimal ;
+        sh:minCount 1 ;
+        sh:minInclusive 0.0 ;
+        sh:maxInclusive 10.0 ;
+        sh:message "Coffee_Intake >= 0 et <= 10 (tasses/jour)." ;
+    ] ;
+
+    # Caffeine (mg)
+    sh:property [
+        sh:path ex:caffeineMg ;
+        sh:datatype xsd:decimal ;
+        sh:minInclusive 0.0 ;
+        sh:maxInclusive 2000.0 ;
+    ] ;
+
+    # Sleep hours (decimal 0-24)
+    sh:property [
+        sh:path ex:sleepHours ;
+        sh:datatype xsd:decimal ;
+        sh:minInclusive 0.0 ;
+        sh:maxInclusive 24.0 ;
+    ] ;
+
+    # Sleep quality (énum)
+    sh:property [
+        sh:path ex:sleepQuality ;
+        sh:in ( "Excellent" "Good" "Fair" "Poor" ) ;
+    ] ;
+
+    # BMI
+    sh:property [
+        sh:path ex:bmi ;
+        sh:datatype xsd:decimal ;
+        sh:minInclusive 10.0 ;
+        sh:maxInclusive 60.0 ;
+    ] ;
+
+    # Heart rate
+    sh:property [
+        sh:path ex:heartRate ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 30 ;
+        sh:maxInclusive 220 ;
+    ] ;
+
+    # Stress level (enum)
+    sh:property [
+        sh:path ex:stressLevel ;
+        sh:in ( "Low" "Medium" "High" ) ;
+    ] ;
+
+    # Physical activity hours (heures/semaine)
+    sh:property [
+        sh:path ex:physicalActivityHours ;
+        sh:datatype xsd:decimal ;
+        sh:minInclusive 0.0 ;
+        sh:maxInclusive 168.0 ;
+    ] ;
+
+    # Health issues (enum)
+    sh:property [
+        sh:path ex:healthIssues ;
+        sh:in ( "None" "Mild" "Moderate" "Severe" ) ;
+    ] ;
+
+    # Occupation (string)
+    sh:property [
+        sh:path ex:occupation ;
+        sh:datatype xsd:string ;
+    ] ;
+
+    # Smoking & Alcohol (0 ou 1)
+    sh:property [
+        sh:path ex:smoking ;
+        sh:datatype xsd:integer ;
+        sh:in ( 0 1 ) ;
+    ] ;
+    sh:property [
+        sh:path ex:alcoholConsumption ;
+        sh:datatype xsd:integer ;
+        sh:in ( 0 1 ) ;
+    ] .
+
+# Contrôle d'unicité sur ex:id (utilise SHACL-SPARQL)
+ex:UniqueIdShape a sh:NodeShape ;
+    sh:targetClass ex:Participant ;
+    sh:sparql [
+        sh:message "La valeur ex:id doit être unique parmi tous les participants." ;
+        sh:select """
+            SELECT ?this ?id WHERE {
+                ?this ex:id ?id .
+                ?other ex:id ?id .
+                FILTER (?other != ?this)
+            }
+        """ ;
+        sh:severity sh:Violation ;
+    ] .
