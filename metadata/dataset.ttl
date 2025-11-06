@@ -1,0 +1,54 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ldp: <http://www.w3.org/ns/ldp#> .
+
+<http://localhost:8080/dataset/262fb0f5-56f9-4be3-9504-fa9507151dd4> a dcat:Resource,
+    dcat:Dataset;
+  <http://www.w3.org/2000/01/rdf-schema#label> "Synthetic Coffee Health Dataset";
+  dcterms:title "Synthetic Coffee Health Dataset";
+  dcat:version "1";
+  <https://w3id.org/fdp/fdp-o#metadataIssued> "2025-11-06T12:58:57.920126127Z"^^xsd:dateTime;
+  <https://w3id.org/fdp/fdp-o#metadataModified> "2025-11-06T13:01:56.941080918Z"^^xsd:dateTime;
+  dcterms:license <http://purl.org/NET/rdflicense/cc-zero1.0>;
+  dcterms:language <http://id.loc.gov/vocabulary/iso639-1/en>;
+  <https://w3id.org/fdp/fdp-o#metadataIdentifier> <http://localhost:8080/dataset/262fb0f5-56f9-4be3-9504-fa9507151dd4#identifier>;
+  dcterms:accessRights <http://localhost:8080/dataset/262fb0f5-56f9-4be3-9504-fa9507151dd4#accessRights>;
+  dcterms:publisher [ a foaf:Agent;
+      foaf:name "group 9"
+    ];
+  dcterms:isPartOf <http://localhost:8080/catalog/e11e6506-9b62-4982-b455-afd7087babc7>;
+  <http://semanticscience.org/resource/SIO_000628> <http://localhost:8080/dataset/262fb0f5-56f9-4be3-9504-fa9507151dd4/metrics/445c0a70d1e214e545b261559e2842f4>,
+    <http://localhost:8080/dataset/262fb0f5-56f9-4be3-9504-fa9507151dd4/metrics/5d27e854a9e78eb3f663331cd47cdc13>;
+  dcterms:issued "2025-11-05T23:11:00Z"^^xsd:dateTime;
+  dcat:theme <https://w3id.org/skgo/modsci#Health>;
+  dcat:distribution <http://localhost:8080/distribution/5bb6bad9-54f1-4558-9cc9-01d147294f35>,
+    <http://localhost:8080/distribution/2e647d06-e3e1-4e08-a88d-d6e9fb9cd6a3>;
+  dcterms:conformsTo <http://localhost:8080/profile/2f08228e-1789-40f8-84cd-28e3288c3604> .
+
+<http://localhost:8080/dataset/262fb0f5-56f9-4be3-9504-fa9507151dd4#identifier> a
+    <http://purl.org/spar/datacite/Identifier>;
+  dcterms:identifier "http://localhost:8080/dataset/262fb0f5-56f9-4be3-9504-fa9507151dd4" .
+
+<http://localhost:8080/dataset/262fb0f5-56f9-4be3-9504-fa9507151dd4#accessRights>
+  a dcterms:RightsStatement;
+  dcterms:description "This resource has no access restriction" .
+
+<http://localhost:8080/dataset/262fb0f5-56f9-4be3-9504-fa9507151dd4/metrics/445c0a70d1e214e545b261559e2842f4>
+  <http://semanticscience.org/resource/SIO_000628> <https://www.ietf.org/rfc/rfc3986.txt>;
+  <http://semanticscience.org/resource/SIO_000332> <https://www.ietf.org/rfc/rfc3986.txt> .
+
+<http://localhost:8080/dataset/262fb0f5-56f9-4be3-9504-fa9507151dd4/metrics/5d27e854a9e78eb3f663331cd47cdc13>
+  <http://semanticscience.org/resource/SIO_000628> <https://www.wikidata.org/wiki/Q8777>;
+  <http://semanticscience.org/resource/SIO_000332> <https://www.wikidata.org/wiki/Q8777> .
+
+<http://localhost:8080/distribution/> a ldp:DirectContainer;
+  dcterms:title "Distributions";
+  ldp:membershipResource <http://localhost:8080/dataset/262fb0f5-56f9-4be3-9504-fa9507151dd4>;
+  ldp:hasMemberRelation dcat:distribution;
+  ldp:contains <http://localhost:8080/distribution/5bb6bad9-54f1-4558-9cc9-01d147294f35>,
+    <http://localhost:8080/distribution/2e647d06-e3e1-4e08-a88d-d6e9fb9cd6a3> .
+
+<http://localhost:8080/profile/2f08228e-1789-40f8-84cd-28e3288c3604> <http://www.w3.org/2000/01/rdf-schema#label>
+    "Dataset Profile" .

@@ -1,0 +1,56 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ldp: <http://www.w3.org/ns/ldp#> .
+
+<http://localhost:8080/dataset/> a ldp:DirectContainer, ldp:DirectContainer;
+  dcterms:title "Datasets", "Datasets";
+  ldp:hasMemberRelation dcat:dataset, dcat:dataset;
+  ldp:membershipResource <http://localhost:8080/catalog/e11e6506-9b62-4982-b455-afd7087babc7>,
+    <http://localhost:8080/catalog/e11e6506-9b62-4982-b455-afd7087babc7>;
+  ldp:contains <http://localhost:8080/dataset/262fb0f5-56f9-4be3-9504-fa9507151dd4> .
+
+<http://localhost:8080/catalog/e11e6506-9b62-4982-b455-afd7087babc7> a dcat:Resource,
+    dcat:Catalog;
+  <http://www.w3.org/2000/01/rdf-schema#label> "Synthetic health catalog";
+  dcterms:title "Synthetic health catalog";
+  dcat:version "1";
+  <https://w3id.org/fdp/fdp-o#metadataIssued> "2025-11-06T12:37:35.247408964Z"^^xsd:dateTime;
+  <https://w3id.org/fdp/fdp-o#metadataModified> "2025-11-06T13:01:56.97436871Z"^^xsd:dateTime;
+  dcterms:license <http://purl.org/NET/rdflicense/cc-zero1.0>;
+  dcterms:description "includes IA generated datasets regarding health to be used for study";
+  dcterms:conformsTo <http://localhost:8080/profile/a0949e72-4466-4d53-8900-9436d1049a4b>,
+    <http://localhost:8080/profile/a0949e72-4466-4d53-8900-9436d1049a4b>;
+  dcterms:language <http://id.loc.gov/vocabulary/iso639-1/en>;
+  <https://w3id.org/fdp/fdp-o#metadataIdentifier> <http://localhost:8080/catalog/e11e6506-9b62-4982-b455-afd7087babc7#identifier>;
+  dcterms:accessRights <http://localhost:8080/catalog/e11e6506-9b62-4982-b455-afd7087babc7#accessRights>;
+  dcterms:publisher [ a foaf:Agent;
+      foaf:name "group 9"
+    ];
+  dcterms:isPartOf <http://localhost:8080>;
+  <http://semanticscience.org/resource/SIO_000628> <http://localhost:8080/catalog/e11e6506-9b62-4982-b455-afd7087babc7/metrics/445c0a70d1e214e545b261559e2842f4>,
+    <http://localhost:8080/catalog/e11e6506-9b62-4982-b455-afd7087babc7/metrics/5d27e854a9e78eb3f663331cd47cdc13>;
+  dcterms:issued "2025-11-06T12:37:35.247408964Z"^^xsd:dateTime;
+  dcterms:modified "2025-11-06T12:55:54.593438626Z"^^xsd:dateTime;
+  dcat:dataset <http://localhost:8080/dataset/262fb0f5-56f9-4be3-9504-fa9507151dd4>;
+  dcat:themeTaxonomy <https://w3id.org/skgo/modsci#Health> .
+
+<http://localhost:8080/catalog/e11e6506-9b62-4982-b455-afd7087babc7#identifier> a
+    <http://purl.org/spar/datacite/Identifier>;
+  dcterms:identifier "http://localhost:8080/catalog/e11e6506-9b62-4982-b455-afd7087babc7" .
+
+<http://localhost:8080/catalog/e11e6506-9b62-4982-b455-afd7087babc7#accessRights>
+  a dcterms:RightsStatement;
+  dcterms:description "This resource has no access restriction" .
+
+<http://localhost:8080/profile/a0949e72-4466-4d53-8900-9436d1049a4b> <http://www.w3.org/2000/01/rdf-schema#label>
+    "Catalog Profile", "Catalog Profile" .
+
+<http://localhost:8080/catalog/e11e6506-9b62-4982-b455-afd7087babc7/metrics/445c0a70d1e214e545b261559e2842f4>
+  <http://semanticscience.org/resource/SIO_000628> <https://www.ietf.org/rfc/rfc3986.txt>;
+  <http://semanticscience.org/resource/SIO_000332> <https://www.ietf.org/rfc/rfc3986.txt> .
+
+<http://localhost:8080/catalog/e11e6506-9b62-4982-b455-afd7087babc7/metrics/5d27e854a9e78eb3f663331cd47cdc13>
+  <http://semanticscience.org/resource/SIO_000628> <https://www.wikidata.org/wiki/Q8777>;
+  <http://semanticscience.org/resource/SIO_000332> <https://www.wikidata.org/wiki/Q8777> .
