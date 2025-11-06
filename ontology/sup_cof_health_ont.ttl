@@ -1,18 +1,18 @@
-@prefix : <http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology/> .
+@prefix : <https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology/> .
+@base <https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#> .
 
-<http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology> rdf:type owl:Ontology .
+<https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#> rdf:type owl:Ontology .
 
 #################################################################
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology/affects
+###  https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#affects
 :affects rdf:type owl:ObjectProperty ;
          rdfs:domain :Habits ,
                      :Occupation ;
@@ -20,7 +20,7 @@
                     :Stress_Level .
 
 
-###  http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology/diminish
+###  https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#diminish
 :diminish rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf :affects ;
           rdfs:domain :Alcohol_Consumption ,
@@ -29,20 +29,20 @@
           rdfs:range :Health .
 
 
-###  http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology/hasHabit
+###  https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#hasHabit
 :hasHabit rdf:type owl:ObjectProperty ;
           rdfs:domain :Person ;
           rdfs:range :Habits .
 
 
-###  http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology/hasMetric
+###  https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#hasMetric
 :hasMetric rdf:type owl:ObjectProperty ;
            rdfs:domain :Health ;
            rdfs:range :BMI ,
                       :Heart_Rate .
 
 
-###  http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology/improves
+###  https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#improves
 :improves rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf :affects ;
           rdfs:domain :Physical_Activity ;
@@ -50,13 +50,13 @@
                      :Heart_Rate .
 
 
-###  http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology/indicates
+###  https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#indicates
 :indicates rdf:type owl:ObjectProperty ;
            rdfs:domain :Heatlh_Issues ;
            rdfs:range :Health .
 
 
-###  http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology/leadsTo
+###  https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#leadsTo
 :leadsTo rdf:type owl:ObjectProperty ;
          rdfs:domain :Coffee_Intake ;
          rdfs:range :Caffeine .
@@ -66,64 +66,64 @@
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology/Alcohol_Consumption
+###  https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#Alcohol_Consumption
 :Alcohol_Consumption rdf:type owl:Class ;
                      rdfs:subClassOf :Habits .
 
 
-###  http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology/BMI
+###  https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#BMI
 :BMI rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology/Caffeine
+###  https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#Caffeine
 :Caffeine rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology/Coffee_Intake
+###  https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#Coffee_Intake
 :Coffee_Intake rdf:type owl:Class ;
                rdfs:subClassOf :Habits .
 
 
-###  http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology/Habits
+###  https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#Habits
 :Habits rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology/Health
+###  https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#Health
 :Health rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology/Heart_Rate
+###  https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#Heart_Rate
 :Heart_Rate rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology/Heatlh_Issues
+###  https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#Heatlh_Issues
 :Heatlh_Issues rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology/Occupation
+###  https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#Occupation
 :Occupation rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology/Person
+###  https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#Person
 :Person rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology/Physical_Activity
+###  https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#Physical_Activity
 :Physical_Activity rdf:type owl:Class ;
                    rdfs:subClassOf :Habits .
 
 
-###  http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology/Sleep
+###  https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#Sleep
 :Sleep rdf:type owl:Class ;
        rdfs:subClassOf :Habits .
 
 
-###  http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology/Smoking
+###  https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#Smoking
 :Smoking rdf:type owl:Class ;
          rdfs:subClassOf :Habits .
 
 
-###  http://www.semanticweb.org/ttuga/ontologies/2025/9/suplementary_coffee_health_ontology/Stress_Level
+###  https://github.com/taybtt/FDE-Project/blob/main/ontology/sup_cof_health_ont.ttl#Stress_Level
 :Stress_Level rdf:type owl:Class .
 
 
